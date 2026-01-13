@@ -35,3 +35,9 @@ next-env.d.ts
 
 # Migration data (generated)
 /src/data/*.json
+migration-summary.json
+
+# Public assets (generated)
+/public/images/**/*
+/public/videos/**/*
+/public/resume.pdf

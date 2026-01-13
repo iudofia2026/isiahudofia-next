@@ -13,13 +13,13 @@
     "test:integration": "vitest run __tests__/integration",
     "test:e2e": "playwright test",
     "test:all": "npm run test:unit && npm run test:integration && npm run test:e2e",
-    "test:generate": "ts-node scripts/generate-tests.ts",
-    "test:validate": "ts-node scripts/validate-migration.ts",
+    "test:generate": "tsx scripts/generate-tests.ts",
+    "test:validate": "tsx scripts/validate-migration.ts",
     "test:coverage": "vitest run --coverage",
-    "migrate": "ts-node scripts/migrate-all.ts",
-    "extract:content": "ts-node scripts/extract-content.ts",
-    "migrate:images": "ts-node scripts/migrate-images.ts",
-    "migrate:videos": "ts-node scripts/migrate-videos.ts",
+    "migrate": "tsx scripts/migrate-all.ts",
+    "extract:content": "tsx scripts/extract-content.ts",
+    "migrate:images": "tsx scripts/migrate-images.ts",
+    "migrate:videos": "tsx scripts/migrate-videos.ts",
     "dev:compare": "concurrently \"npm run dev\" \"cd ../isiahudofia.com && npm run dev -- -p 3001\""
   },
   "dependencies": {
@@ -51,6 +51,7 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.0.17"
   }

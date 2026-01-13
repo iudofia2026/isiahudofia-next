@@ -1,64 +1,55 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 export const Navigation: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Resume', href: '/resume' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-container-xl mx-auto px-4 md:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      <div className="max-w-screen-xl mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo/Name */}
-          <Link href="/" className="font-display font-bold text-xl md:text-2xl hover:text-brand-blue transition-colors">
-            IU
+          {/* Name Link - Bracket style like original */}
+          <Link
+            href="/"
+            className="hidden md:flex items-center gap-1 text-sm text-neutral-400 hover:text-brand-blue transition-colors group"
+          >
+            <span className="text-brand-blue">[</span>
+            <span className="font-medium group-hover:ml-0.5 transition-all">Isiah Udofia</span>
+            <span className="text-brand-blue">]</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-body-lg font-medium text-neutral-600 hover:text-brand-blue relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-blue transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
+          {/* Navigation Links - Bracket style like original */}
+          <div className="flex items-center gap-6 md:gap-8">
+            <Link
+              href="/"
+              className="hidden md:flex items-center gap-1 text-sm text-neutral-400 hover:text-brand-blue transition-colors group"
+            >
+              <span className="text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">[</span>
+              <span className="font-medium group-hover:ml-0.5 transition-all">Work</span>
+              <span className="text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+            </Link>
+            <Link
+              href="/info"
+              className="hidden md:flex items-center gap-1 text-sm text-neutral-400 hover:text-brand-blue transition-colors group"
+            >
+              <span className="text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">[</span>
+              <span className="font-medium group-hover:ml-0.5 transition-all">Info</span>
+              <span className="text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+            </Link>
+            <Link
+              href="/resume"
+              className="hidden md:flex items-center gap-1 text-sm text-neutral-400 hover:text-brand-blue transition-colors group"
+            >
+              <span className="text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">[</span>
+              <span className="font-medium group-hover:ml-0.5 transition-all">Resume</span>
+              <span className="text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity">]</span>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-neutral-400"
             aria-label="Toggle menu"
-            onClick={() => {
-              // TODO: Implement mobile menu
-              console.log('Mobile menu toggle');
-            }}
           >
             <svg
               className="w-6 h-6"

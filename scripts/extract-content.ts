@@ -37,12 +37,18 @@ async function extractContent() {
     await fs.writeJSON(path.join(dataDir, 'contact.json'), contact, { spaces: 2 });
     console.log('✅ Contact info saved\n');
 
+    // Extract education
+    const education = extractor.extractEducation();
+    await fs.writeJSON(path.join(dataDir, 'education.json'), education, { spaces: 2 });
+    console.log('✅ Education saved\n');
+
     // Summary
     console.log('📊 Extraction Summary:');
     console.log(`  - Hero: ${hero.name}`);
     console.log(`  - Projects: ${projects.length} found`);
     console.log(`  - Skills: ${Object.keys(skills).length} categories`);
     console.log(`  - Experience: ${experience.length} positions`);
+    console.log(`  - Education: ${education.length} entries`);
     console.log(`  - Contact: ${contact.email || 'No email found'}`);
     console.log('\n🎉 Content extraction complete!');
     console.log(`📁 Data saved to: ${path.resolve(dataDir)}`);
